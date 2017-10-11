@@ -3,12 +3,11 @@ package skinstrade.model;
 import skinstrade.model.Enum.Rarity;
 import skinstrade.model.Enum.TypeGroup;
 import skinstrade.model.Enum.Wear;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class URLFormer {
-    //TODO search protection ( if neon revolution do neon+revolution )
+
     public static URL bitSkinsGenerateURL(String search, TypeGroup type, Rarity rarity, Wear wear, int isStatTrack, int hasSticker, int isSouvenir, int sortType, int order) {
         String string_url = "https://bitskins.com/";
         URL resultURL = null;
@@ -16,6 +15,7 @@ public final class URLFormer {
         if (search.isEmpty()) {
             string_url += "?appid=730";
         } else {
+            search = search.replace(" ","+");    //bon format pour search
             string_url += "?market_hash_name=" + search + "&appid=730";
         }
         //type

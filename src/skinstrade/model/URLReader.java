@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class URLReader {
 
@@ -79,10 +80,17 @@ public class URLReader {
     }
 
     public static void main(String[] args) throws Exception {
-        /*
-        URLReader reader1 = new URLReader(URLFormer.bitSkinsGenerateURL("Neon", TypeGroup.ANY, Rarity.ANY, Wear.FACTORYNEW, 0, 0, 0, 1, 1));
-        System.out.println(reader1.getItem(0));
-        System.out.println(reader1.getItem(1));
-        */
+        //tempo arraylist to work with
+        ArrayList<String> ListeItems = new ArrayList<String>();
+        ListeItems.add("Tiger");
+        ListeItems.add("Neon Revolution");
+        ListeItems.add("Muertos");
+
+        for (String str : ListeItems) {
+            URLReader reader1 = new URLReader(URLFormer.bitSkinsGenerateURL(str, TypeGroup.ANY, Rarity.ANY, Wear.FACTORYNEW, 0, 0, 0, 1, 1));
+            for (int i = 0; i < 5; i++) {
+                System.out.println(reader1.getItem(i));
+            }
+        }
     }
 }
