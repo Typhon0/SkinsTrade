@@ -9,14 +9,14 @@ import java.net.URL;
 
 public final class URLFormer {
     //TODO search protection ( if neon revolution do neon+revolution )
-    public static URL bitSkinsGenerateURL(String search, TypeGroup type, Rarity rarity, Wear wear, byte isStatTrack, byte hasSticker, byte isSouvenir, byte sortType, byte order) {
+    public static URL bitSkinsGenerateURL(String search, TypeGroup type, Rarity rarity, Wear wear, int isStatTrack, int hasSticker, int isSouvenir, int sortType, int order) {
         String string_url = "https://bitskins.com/";
         URL resultURL = null;
         //search
         if (search.isEmpty()) {
             string_url += "?appid=730";
         } else {
-            string_url += "?market_hash_name" + search + "&appid=730";
+            string_url += "?market_hash_name=" + search + "&appid=730";
         }
         //type
         if (type != TypeGroup.ANY) {
@@ -55,23 +55,23 @@ public final class URLFormer {
             string_url += "&is_souvenir=" + "0"; //any
         }
         //sortType
-        if(sortType == 0){
-            string_url += "&sort_by=" +"bumped_at"; //Featured
-        }else if(sortType == 1){
+        if (sortType == 0) {
+            string_url += "&sort_by=" + "bumped_at"; //Featured
+        } else if (sortType == 1) {
             string_url += "&sort_by=" + "price";    //Price
-        }else if(sortType == 2){
+        } else if (sortType == 2) {
             string_url += "&sort_by=" + "created_at";     //Date Added
-        }else{
+        } else {
             string_url += "&sort_by=" + "wear_value";   //Float (wear)
         }
         //order
-        if(order == 0){
+        if (order == 0) {
             string_url += "&order=" + "desc"; //Descendant
-        }else{
+        } else {
             string_url += "&order=" + "asc"; //Ascendant
         }
         //generation de l'URL
-        try{
+        try {
             resultURL = new URL(string_url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
