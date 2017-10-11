@@ -1,6 +1,8 @@
 package skinstrade.model;
 
-public class Item {
+import java.util.Comparator;
+
+public class Item implements Comparable<Item>, Comparator<Item> {
     private String name;
     private double price;
     private double wear;
@@ -48,5 +50,25 @@ public class Item {
                 ", price=" + price +
                 ", wear=" + wear +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        if(this.name.equals(o.name)){
+            if(this.wear == o.wear){
+                return 0;
+            }else if(this.wear > o.wear){
+                return 1;
+            }else{
+                return -1;
+            }
+        }else{
+            return this.name.compareTo(o.name);
+        }
+    }
+
+    @Override
+    public int compare(Item o1, Item o2) {
+        return o1.compareTo(o2);
     }
 }

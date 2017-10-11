@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class URLReader {
 
@@ -81,16 +82,22 @@ public class URLReader {
 
     public static void main(String[] args) throws Exception {
         //tempo arraylist to work with
-        ArrayList<String> ListeItems = new ArrayList<String>();
-        ListeItems.add("Tiger");
-        ListeItems.add("Neon Revolution");
-        ListeItems.add("Muertos");
+        ArrayList<String> listeNames = new ArrayList<String>();
+        ArrayList<Item> listeItems = new ArrayList<Item>();
+        listeNames.add("Tiger");
+        listeNames.add("Neon Revolution");
+        listeNames.add("Muertos");
 
-        for (String str : ListeItems) {
+        for (String str : listeNames) {
             URLReader reader1 = new URLReader(URLFormer.bitSkinsGenerateURL(str, TypeGroup.ANY, Rarity.ANY, Wear.FACTORYNEW, 0, 0, 0, 1, 1));
             for (int i = 0; i < 5; i++) {
-                System.out.println(reader1.getItem(i));
+                //System.out.println(reader1.getItem(i));
+                listeItems.add(reader1.getItem(i));
             }
+        }
+        Collections.sort(listeItems);
+        for(Item x:listeItems){
+            System.out.println(x.toString());
         }
     }
 }
